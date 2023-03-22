@@ -1,12 +1,12 @@
 const form = document.querySelector('form');
 const password = document.querySelector('#password');
 
-function generatePassword(length, includeLowercase, includeUppercase, includeNumbers, includeSpecial) {
+function generatePassword(length, includeLowercase, includeUppercase, includeNumbers, includeCharacters) {
     let characters = '';
     if (includeLowercase) characters += 'abcdefghijklmnopqrstuvwxyz';
     if (includeUppercase) characters += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     if (includeNumbers) characters += '0123456789';
-    if (includeSpecial) characters += '!@#$%^&*()_+-={}[]|:;"<>,.?/~`';
+    if (includeCharacters) characters += '!@#$%^&*()_+-={}[]|:;"<>,.?/~`';
 
     let result = '';
     for (let i = 0; i < length; i++) {
@@ -21,12 +21,12 @@ form.addEventListener('submit', function (e) {
     const includeLowercase = form.querySelector('#lowercase').checked;
     const includeUppercase = form.querySelector('#uppercase').checked;
     const includeNumbers = form.querySelector('#numbers').checked;
-    const includeSpecial = form.querySelector('#special').checked;
+    const includeCharacters = form.querySelector('#characters').checked;
 
     if (length <= 0) {
         password.textContent = "Erreur : La longueur du mot de passe doit être supérieure à 0.";
     } else {
-        const result = generatePassword(length, includeLowercase, includeUppercase, includeNumbers, includeSpecial);
+        const result = generatePassword(length, includeLowercase, includeUppercase, includeNumbers, includeCharacters);
         password.textContent = result;
     }
 });
