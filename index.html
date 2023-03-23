@@ -12,6 +12,11 @@
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
   <style type="text/css">
+    .dropdown-item.active,
+    .dropdown-item:active {
+      background-color: whitesmoke;
+    }
+
     #password::selection {
       background: none;
     }
@@ -24,8 +29,8 @@
 
 <body class="p-3 m-0 border-0">
 
-  <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist"
-    style="--bs-nav-link-color: rgba(255, 255, 255, .75); --bs-nav-link-hover-color: #fff; --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+  <ul class="nav nav-pills nav-fill gap-2 p-1 small rounded-5 shadow-sm" id="pillNav2" role="tablist"
+    style="background-color: var(--bs-dark); --bs-nav-link-color: rgba(255, 255, 255, .75); --bs-nav-link-hover-color: #fff; --bs-nav-pills-link-active-color: var(--bs-dark); --bs-nav-pills-link-active-bg: var(--bs-white);">
     <li class="nav-item" role="presentation">
       <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" data-bs-target="#home" type="button"
         role="tab" aria-selected="true">Home</button>
@@ -165,9 +170,54 @@
     </div>
   </div>
 
-  <script>
-    var copyBtns = document.querySelectorAll('.copy-btn');
+  <div class="container fixed-bottom">
+    <ul class="nav justify-content-center border-bottom pb-1 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+      <div class="dropup-center dropup">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Theme
+        </button>
+        <ul class="dropdown-menu p-1 rounded-3" data-bs-popper="static">
+          <li><button class="dropdown-item text-muted rounded-5" id="theme-light"><i
+                class="bi bi-brightness-high-fill me-2"></i>Light</button></li>
+          <li><button class="dropdown-item text-muted rounded-5" id="theme-dark"><i
+                class="bi bi-moon-stars-fill me-2"></i>Dark</button></li>
+        </ul>
+      </div>
+    </ul>
+    <p class="text-center text-muted"> © 2023 - Tous Droits Réservés</p>
+  </div>
 
+  <script>
+    const html = document.querySelector('html');
+    const themeLightButton = document.getElementById("theme-light");
+    const themeDarkButton = document.getElementById("theme-dark");
+    function changeTheme(theme) {
+      html.setAttribute("data-bs-theme", theme);
+      localStorage.setItem("theme", theme);
+    }
+    themeLightButton.addEventListener("click", function () {
+      changeTheme("light");
+    });
+    themeDarkButton.addEventListener("click", function () {
+      changeTheme("dark");
+    });
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      changeTheme(savedTheme);
+    }
+
+    $(document).ready(function () {
+      $(".dropdown-item").click(function () {
+        $(".dropdown-item").removeClass("active");
+        $(this).addClass("active");
+      });
+    });
+
+    var copyBtns = document.querySelectorAll('.copy-btn');
     for (var i = 0; i < copyBtns.length; i++) {
       new ClipboardJS(copyBtns[i], {
         container: document.querySelector('#result')
