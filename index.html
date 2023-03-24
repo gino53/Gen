@@ -12,6 +12,16 @@
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
   <style type="text/css">
+    .navbar-toggler:focus,
+    .btn-close:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    li.dropdown {
+      list-style: none;
+    }
+
     .dropdown-item.active,
     .dropdown-item:active {
       background-color: whitesmoke;
@@ -27,23 +37,51 @@
   </style>
 </head>
 
-<body class="p-3 m-0 border-0">
+<body>
 
-  <ul class="nav nav-pills nav-fill gap-2 p-1 small rounded-5 shadow-sm" id="pillNav2" role="tablist"
-    style="background-color: var(--bs-dark); --bs-nav-link-color: rgba(255, 255, 255, .75); --bs-nav-link-hover-color: #fff; --bs-nav-pills-link-active-color: var(--bs-dark); --bs-nav-pills-link-active-bg: var(--bs-white);">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" data-bs-target="#home" type="button"
-        role="tab" aria-selected="true">Home</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link rounded-5" id="password-tab2" data-bs-toggle="tab" data-bs-target="#container-password"
-        type="button" role="tab" aria-selected="false" tabindex="-1">Mot de passe</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link rounded-5" id="username-tab2" data-bs-toggle="tab" data-bs-target="#container-username"
-        type="button" role="tab" aria-selected="false" tabindex="-1">Pseudo</button>
-    </li>
-  </ul>
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Generator</a>
+      <button class="navbar-toggler border-0 outline-0" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false">
+        <i class="bi bi-filter-right fs-2"></i>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Generator</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body pt-0">
+          <ul class="navbar-nav justify-content-end flex-grow-1 py-3 border-top" id="pillNav2" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" href="#home" data-bs-toggle="tab" role="tab" aria-selected="true">Home</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" href="#container-password" data-bs-toggle="tab" role="tab" aria-selected="false"
+                tabindex="-1">Mot de passe</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" href="#container-username" data-bs-toggle="tab" role="tab" aria-selected="false"
+                tabindex="-1">Pseudo</a>
+            </li>
+          </ul>
+          <li class="nav-item dropdown pt-3 border-top">
+            <a class="nav-link py-2 px-0 px-lg-2 dropdown-toggle" id="bd-theme" type="button" aria-expanded="false"
+              data-bs-toggle="dropdown" data-bs-display="static">
+              <span class="d-lg-none">Theme</span>
+            </a>
+            <ul class="dropdown-menu p-1 rounded-3">
+              <li><button class="dropdown-item text-muted rounded-5" id="theme-light"><i
+                    class="bi bi-brightness-high-fill me-2"></i>Light</button></li>
+              <li><button class="dropdown-item text-muted rounded-5" id="theme-dark"><i
+                    class="bi bi-moon-stars-fill me-2"></i>Dark</button></li>
+            </ul>
+          </li>
+          <p class="text-center text-muted"> © 2023 - Tous Droits Réservés</p>
+        </div>
+      </div>
+    </div>
+  </nav>
 
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -98,7 +136,7 @@
             </form>
             <div class="text-center m-3" id="result-password" style="display: none;">
               <p>
-                <button class="copy-btn btn btn-primary" data-clipboard-target="#result-password .result">
+                <button class="copy-btn btn text-muted border-0" data-clipboard-target="#result-password .result">
                   <i class="bi bi-clipboard-fill"></i>
                 </button>
                 <strong>Votre mot de passe :</strong>
@@ -157,7 +195,7 @@
             </form>
             <div class="text-center m-3" id="result-username" style="display: none;">
               <p>
-                <button class="copy-btn btn btn-primary" data-clipboard-target="#result-username .result">
+                <button class="copy-btn btn text-muted border-0" data-clipboard-target="#result-username .result">
                   <i class="bi bi-clipboard-fill"></i>
                 </button>
                 <strong>Votre pseudo :</strong>
@@ -170,65 +208,52 @@
     </div>
   </div>
 
-  <div class="container fixed-bottom">
-    <ul class="nav justify-content-center border-bottom pb-1 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-      <div class="dropup-center dropup">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Theme
-        </button>
-        <ul class="dropdown-menu p-1 rounded-3" data-bs-popper="static">
-          <li><button class="dropdown-item text-muted rounded-5" id="theme-light"><i
-                class="bi bi-brightness-high-fill me-2"></i>Light</button></li>
-          <li><button class="dropdown-item text-muted rounded-5" id="theme-dark"><i
-                class="bi bi-moon-stars-fill me-2"></i>Dark</button></li>
-        </ul>
-      </div>
-    </ul>
-    <p class="text-center text-muted"> © 2023 - Tous Droits Réservés</p>
-  </div>
-
   <script>
-    const html = document.querySelector('html');
+    const html = document.querySelector("html");
     const themeLightButton = document.getElementById("theme-light");
     const themeDarkButton = document.getElementById("theme-dark");
+
     function changeTheme(theme) {
       html.setAttribute("data-bs-theme", theme);
       localStorage.setItem("theme", theme);
     }
+
     themeLightButton.addEventListener("click", function () {
       changeTheme("light");
+      themeLightButton.classList.add("active");
+      themeDarkButton.classList.remove("active");
     });
+
     themeDarkButton.addEventListener("click", function () {
       changeTheme("dark");
+      themeDarkButton.classList.add("active");
+      themeLightButton.classList.remove("active");
     });
+
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       changeTheme(savedTheme);
+      if (savedTheme === "light") {
+        themeLightButton.classList.add("active");
+        themeDarkButton.classList.remove("active");
+      } else if (savedTheme === "dark") {
+        themeDarkButton.classList.add("active");
+        themeLightButton.classList.remove("active");
+      }
     }
 
-    $(document).ready(function () {
-      $(".dropdown-item").click(function () {
-        $(".dropdown-item").removeClass("active");
-        $(this).addClass("active");
-      });
-    });
-
-    var copyBtns = document.querySelectorAll('.copy-btn');
+    var copyBtns = document.querySelectorAll(".copy-btn");
     for (var i = 0; i < copyBtns.length; i++) {
       new ClipboardJS(copyBtns[i], {
-        container: document.querySelector('#result')
-      }).on('success', function (e) {
+        container: document.querySelector("#result")
+      }).on("success", function (e) {
         var btn = e.trigger;
         var originalHtml = btn.innerHTML;
         btn.innerHTML = '<i class="bi bi-spellcheck"></i>';
 
         setTimeout(function () {
           btn.innerHTML = originalHtml;
-        }, 4000);
+        }, 3000);
       });
     }
   </script>
