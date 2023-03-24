@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
   <style type="text/css">
     .navbar-toggler:focus,
@@ -68,7 +69,7 @@
           <li class="nav-item dropdown pt-3 border-top">
             <a class="nav-link py-2 px-0 px-lg-2 dropdown-toggle" id="bd-theme" type="button" aria-expanded="false"
               data-bs-toggle="dropdown" data-bs-display="static">
-              <span class="d-lg-none">Theme</span>
+              <span>Theme</span>
             </a>
             <ul class="dropdown-menu p-1 rounded-3">
               <li><button class="dropdown-item text-muted rounded-5" id="theme-light"><i
@@ -85,7 +86,75 @@
 
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <!-- Contenu de la page Home -->
+      <div class="container px-4 py-5" id="icon-grid">
+        <div class="d-flex border-bottom">
+          <i class="bi bi-info-circle-fill fs-3 me-1 text-body-secondary"></i>
+          <h2 class="pb-2">Conseil mot de passe</h2>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 g-4 py-5">
+          <div class="col d-flex align-items-start">
+            <i class="bi bi-shield-fill-check fs-3 me-3 text-body-secondary"></i>
+            <div>
+              <h3 class="fw-bold mb-0 fs-4">Un mot de passe sécurisé</h3>
+              <p>Utilisez une combinaison de lettres, de chiffres et de caractères spéciaux : Les mots de passe qui
+                combinent des
+                lettres majuscules et minuscules, des chiffres et des caractères spéciaux sont plus difficiles à deviner
+                et donc plus sécurisés.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <i class="bi bi-shield-fill-exclamation fs-3 me-3 text-body-secondary"></i>
+            <div>
+              <h3 class="fw-bold mb-0 fs-4">Mots simples et informations personnelles</h3>
+              <p>Évitez d'utiliser des mots courants tels que "password" ou des informations personnelles telles que
+                votre date de naissance ou votre nom de famille dans
+                votre mot de passe. Ces informations sont faciles à deviner pour les hackers.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <i class="bi bi-file-text-fill fs-3 me-3 text-body-secondary"></i>
+            <div>
+              <h3 class="fw-bold mb-0 fs-4">Préférer une phrase</h3>
+              <p>Utilisez une phrase secrète plutôt qu'un mot simple, de préférence une phrase qui n'a pas de sens et
+                qui est difficile à deviner pour créer un mot de passe fort et unique.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <i class="bi bi-person-fill-lock fs-3 me-3 text-body-secondary"></i>
+            <div>
+              <h3 class="fw-bold mb-0 fs-4">Un compte = un mot de passe</h3>
+              <p>Évitez d'utiliser le même mot de passe pour
+                tous
+                vos
+                comptes en ligne. Si un pirate informatique découvre votre mot de passe pour un compte, il aura accès à
+                tous
+                vos
+                autres comptes si vous utilisez le même mot de passe.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <i class="bi bi-calendar-check-fill fs-3 me-3 text-body-secondary"></i>
+            <div>
+              <h3 class="fw-bold mb-0 fs-4">Changer régulièrement son mot de passe</h3>
+              <p>Changez régulièrement vos mots de passe pour vous assurer que votre
+                compte reste protégé en cas de violation de données.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <i class="bi bi-pc-display fs-3 me-3 text-body-secondary"></i>
+            <div>
+              <h3 class="fw-bold mb-0 fs-4">Éviter l'enregistrement</h3>
+              <p> Évitez d'enregistrer vos
+                mots de passe sur votre ordinateur ou dans votre navigateur. Si quelqu'un accède à votre ordinateur, il
+                pourra
+                facilement trouver vos mots de passe.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mb-5">
+        <canvas id="myChart"></canvas>
+      </div>
     </div>
 
     <div class="tab-pane fade" id="container-password" role="tabpanel" aria-labelledby="password-tab">
@@ -257,6 +326,7 @@
       });
     }
   </script>
+  <script src="graphic.js"></script>
   <script src="password.js"></script>
   <script src="username.js"></script>
 </body>
