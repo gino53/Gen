@@ -42,7 +42,7 @@
 
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Generator</a>
+      <h3>Generator</h3>
       <button class="navbar-toggler border-0 outline-0" type="button" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false">
         <i class="bi bi-filter-right fs-2"></i>
@@ -86,12 +86,73 @@
 
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <div class="container px-4 py-5" id="icon-grid">
+
+    </div>
+
+    <div class="tab-pane fade" id="container-password" role="tabpanel" aria-labelledby="password-tab">
+      <div class="container my-5 pt-5">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Générateur de mot de passe</h1>
+            <p class="text-center">Utilisez le formulaire ci-dessous pour générer un mot de passe aléatoire en fonction
+              de
+              vos préférences :</p>
+            <form id="form-password">
+              <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="length" name="length" min="6" max="20" placeholder="8">
+                <label for="length">Longueur</label>
+              </div>
+              <div class="d-md-flex justify-content-center m-md-4 my-4">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-check form-switch">
+                      <input type="checkbox" role="switch" class="form-check-input check-password" id="lowercase"
+                        name="lowercase">
+                      <label class="form-check-label" for="lowercase">Minuscules</label>
+                    </div>
+                    <div class="form-check form-switch">
+                      <input type="checkbox" role="switch" class="form-check-input check-password" id="uppercase"
+                        name="uppercase">
+                      <label class="form-check-label" for="uppercase">Majuscules</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-check form-switch">
+                      <input type="checkbox" role="switch" class="form-check-input check-password" id="numbers"
+                        name="numbers">
+                      <label class="form-check-label" for="numbers">Chiffres</label>
+                    </div>
+                    <div class="form-check form-switch">
+                      <input type="checkbox" role="switch" class="form-check-input check-password" id="characters"
+                        name="characters">
+                      <label class="form-check-label" for="characters">Caractères</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary border-0" id="btn-submit-password" disabled>Générer le mot de
+                  passe</button>
+              </div>
+            </form>
+            <div class="text-center m-3" id="result-password" style="display: none;">
+              <p>
+                <button class="copy-btn btn text-muted border-0" data-clipboard-target="#result-password .result">
+                  <i class="bi bi-clipboard-fill"></i>
+                </button>
+                <strong>Votre mot de passe :</strong>
+                <span class="result" id="password"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container my-5 pt-5" id="icon-grid">
         <div class="d-flex border-bottom">
           <i class="bi bi-info-circle-fill fs-3 me-1 text-body-secondary"></i>
           <h2 class="pb-2">Conseil mot de passe</h2>
         </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 g-4 py-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 g-4 pt-4">
           <div class="col d-flex align-items-start">
             <i class="bi bi-shield-fill-check fs-3 me-3 text-body-secondary"></i>
             <div>
@@ -151,74 +212,14 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="container mb-5 bg-body-tertiary rounded-3" style="padding: 12px;">
-        <canvas id="myChart"></canvas>
-      </div>
-    </div>
-
-    <div class="tab-pane fade" id="container-password" role="tabpanel" aria-labelledby="password-tab">
-      <div class="container my-4">
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="text-center">Générateur de mot de passe</h1>
-            <p class="text-center">Utilisez le formulaire ci-dessous pour générer un mot de passe aléatoire en fonction
-              de
-              vos préférences :</p>
-            <form id="form-password">
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="length" name="length" min="6" max="20" placeholder="8">
-                <label for="length">Longueur</label>
-              </div>
-              <div class="d-md-flex justify-content-center m-md-4 my-4">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-check form-switch">
-                      <input type="checkbox" role="switch" class="form-check-input check-password" id="lowercase"
-                        name="lowercase">
-                      <label class="form-check-label" for="lowercase">Minuscules</label>
-                    </div>
-                    <div class="form-check form-switch">
-                      <input type="checkbox" role="switch" class="form-check-input check-password" id="uppercase"
-                        name="uppercase">
-                      <label class="form-check-label" for="uppercase">Majuscules</label>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-check form-switch">
-                      <input type="checkbox" role="switch" class="form-check-input check-password" id="numbers"
-                        name="numbers">
-                      <label class="form-check-label" for="numbers">Chiffres</label>
-                    </div>
-                    <div class="form-check form-switch">
-                      <input type="checkbox" role="switch" class="form-check-input check-password" id="characters"
-                        name="characters">
-                      <label class="form-check-label" for="characters">Caractères</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-success" id="btn-submit-password" disabled>Générer le mot de
-                  passe</button>
-              </div>
-            </form>
-            <div class="text-center m-3" id="result-password" style="display: none;">
-              <p>
-                <button class="copy-btn btn text-muted border-0" data-clipboard-target="#result-password .result">
-                  <i class="bi bi-clipboard-fill"></i>
-                </button>
-                <strong>Votre mot de passe :</strong>
-                <span class="result" id="password"></span>
-              </p>
-            </div>
-          </div>
+        <div class="container mt-4 bg-body-tertiary rounded-3" style="padding: 12px;">
+          <canvas id="myChart"></canvas>
         </div>
       </div>
     </div>
 
     <div class="tab-pane fade" id="container-username" role="tabpanel" aria-labelledby="username-tab">
-      <div class="container my-4">
+      <div class="container my-5 pt-5">
         <div class="row">
           <div class="col-md-12">
             <h1 class="text-center">Générateur de pseudo</h1>
@@ -258,7 +259,7 @@
                 </div>
               </div>
               <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-success" id="btn-submit-username" disabled>Générer le
+                <button type="submit" class="btn btn-primary border-0" id="btn-submit-username" disabled>Générer le
                   pseudo</button>
               </div>
             </form>
@@ -270,6 +271,81 @@
                 <strong>Votre pseudo :</strong>
                 <span class="result" id="username"></span>
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container my-5 pt-5">
+        <h1 class="mb-4">Idées de pseudo</h1>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card bg-body-tertiary border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="text-center m-5">~goldkill~</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card bg-body-tertiary border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="text-center m-5">queen2love</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card bg-body-tertiary border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="text-center m-5">historyyoda$</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card bg-body-tertiary border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="text-center m-5">skyleader3</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card bg-body-tertiary border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="text-center m-5">aquamarine92</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card bg-body-tertiary border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="text-center m-5">@ugly</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card bg-body-tertiary border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="text-center m-5">kawaiiultra</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card bg-body-tertiary border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="text-center m-5">oystersoda</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card bg-body-tertiary border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="text-center m-5">dollnugget</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card bg-body-tertiary border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="text-center m-5">rosemary13</h3>
+              </div>
             </div>
           </div>
         </div>
