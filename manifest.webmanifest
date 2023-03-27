@@ -1,7 +1,7 @@
 {
-    "name": "Gen: Mot de passe et Pseudo",
-    "short_name": "Gen",
-    "description": "Un générateur de mots de passe sécurisés et de pseudonymes",
+    "name": "Gen: mots de passe et pseudo",
+    "short_name": "Gen:",
+    "description": "Générez des mots de passe sécurisés et des pseudo uniques en utilisant notre service gratuit en ligne. Créez des identités en ligne uniques et protégez vos informations personnelles avec notre générateur de mots de passe et de pseudo.",
     "icons": [
         {
             "src": "/icons/favicon-16x16.png",
@@ -15,7 +15,7 @@
         },
         {
             "src": "icons/favicon.ico",
-            "sizes":"48x48",
+            "sizes": "48x48",
             "type": "image/png"
         },
         {
